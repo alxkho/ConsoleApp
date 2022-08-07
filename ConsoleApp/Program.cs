@@ -16,8 +16,9 @@ namespace ConsoleApp
         public static void GetTask()
         {
 
-            Console.WriteLine("--------------------------------\n"+"Введите номер задачи (1,2,3)");
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("--------------------------------\n"+
+                              "Введите номер задачи (1,2,3)\n" +
+                              "--------------------------------");
             string task = Console.ReadLine();
             Console.WriteLine("");
 
@@ -35,12 +36,10 @@ namespace ConsoleApp
                     IsNumberPalindrome();
                     GetTask();
                     break;
-
                 case "":
-                    Console.WriteLine("");
-                    Console.WriteLine("--------------------------------");
-                    Console.WriteLine("Чтобы выйти, нажмите Enter");
-                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine("\n--------------------------------\n" +
+                                      "Чтобы выйти, нажмите Enter\n" +
+                                      "--------------------------------");
                     Console.ReadLine();
                     break;
                 default:
@@ -68,9 +67,9 @@ namespace ConsoleApp
         //1
         public static void ReplaceValues()
         {
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine("Задача 1");
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("--------------------------------\n" +
+                              "Задача 1\n" +
+                              "--------------------------------");
 
             var values = GetValues(2);
             string value1 = values[0];
@@ -80,21 +79,19 @@ namespace ConsoleApp
             value2 = value1.Substring(0, value1.Length - value2.Length);
             value1 = value1.Substring(value2.Length);
 
-            Console.WriteLine("Результат:");
-            Console.WriteLine($"Теперь 1 - {value1}, 2 - {value2}");
-            Console.WriteLine("");
+            Console.WriteLine($"Результат:\nТеперь 1 - {value1}, 2 - {value2}\n");
         }
 
         //2
         public static void CompareNumbers(int? value1 = null, int? value2 = null)
         {
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine("Задача 2 (чтобы выйти, не вводите значения)");
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("--------------------------------\n" +
+                              "Задача 2 (чтобы выйти, не вводите значения)\n" +
+                              "--------------------------------");
 
             var values = GetValues(2);
 
-            if (values[0] == "" && values[1] == "")
+            if (values[0] == "" || values[1] == "")
                 return;
 
             try
@@ -103,30 +100,22 @@ namespace ConsoleApp
                 value2 = Convert.ToInt32(values[1]);
                 var sign = value1 == value2 ? "=" : value1 > value2 ? ">" : "<";
 
-                Console.WriteLine("Результат:");
-                Console.WriteLine($"{value1} {sign} {value2}");
-                Console.WriteLine("");
+                Console.WriteLine($"Результат:\n{value1} {sign} {value2}\n");
             }
             catch (Exception)
             {
-                Console.WriteLine("");
-                Console.WriteLine("!!");
-                Console.WriteLine("Введите число");
-                Console.WriteLine("!!");
-                Console.WriteLine("");
+                Console.WriteLine("\n!!\nВведите число\n!!\n");
             }
 
             CompareNumbers(value1, value2);
-
         }
 
         //3
         public static void IsNumberPalindrome()
         {
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine("Задача 3");
-            Console.WriteLine("--------------------------------");
-
+            Console.WriteLine("--------------------------------\n" +
+                              "Задача 3\n" +
+                              "--------------------------------");
             try
             {
                 string value = GetValues(1)[0];
@@ -134,23 +123,22 @@ namespace ConsoleApp
                 if (value == "")
                     return;
 
-                if (!int.TryParse(value, out int r))
-                    throw new Exception();
+                var number = Convert.ToInt32(value);
+                var revers = 0;
 
-                var part1 = value.Substring(0, value.Length / 2);
-                var part2 = value.Substring((value.Length / 2) + 1);
+                while(number > 0)
+                {
+                    revers = revers * 10 + number % 10;
+                    number /= 10;
+                }
 
-                bool result = part1 == string.Join("", part2.Reverse().ToArray());
+                bool result = Convert.ToInt32(value) == revers;
 
                 Console.WriteLine($"Введенное число {value}{(result ? "" : " не")} является полиндромом");
             }
             catch (Exception)
             {
-                Console.WriteLine("");
-                Console.WriteLine("!!");
-                Console.WriteLine("Введите число");
-                Console.WriteLine("!!");
-                Console.WriteLine("");
+                Console.WriteLine("\n!!\nВведите число\n!!\n");
                 IsNumberPalindrome();
             }
         }
