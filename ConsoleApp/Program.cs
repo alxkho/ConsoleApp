@@ -82,7 +82,7 @@ namespace ConsoleApp
             Console.WriteLine($"Результат:\nТеперь 1 - {value1}, 2 - {value2}\n");
         }
 
-        //2
+        //2  
         public static void CompareNumbers(int? value1 = null, int? value2 = null)
         {
             Console.WriteLine("--------------------------------\n" +
