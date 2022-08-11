@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    internal class Program
+    internal class HomeWork3
     {
         static void Main(string[] args)
         {
@@ -96,7 +93,7 @@ namespace ConsoleApp
             Console.ResetColor();
         }
 
-        //2  
+        //2
         public static void CompareNumbers(int? value1 = null, int? value2 = null)
         {
             Console.WriteLine("--------------------------------\n" +
