@@ -141,7 +141,6 @@
             var cols = size[1];
 
             int[,] matrix = new int[rows, cols];
-            int[,] sortMatrix = new int[rows, cols];
             var max = matrix[0, 0];
             var min = matrix[0, 0];
             var sum = 0;
@@ -153,15 +152,6 @@
                 {
                     matrix[i, j] = rand.Next(-100, 100);
                 }
-            }
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    Console.Write(String.Format("{0,4}", matrix[i, j]));
-                }
-                Console.WriteLine();
             }
 
             Console.WriteLine($"\nМатрица - ");
@@ -189,44 +179,32 @@
                     for (int j = 0; j < cols; j++)
                     {
 
-                        if (i != rows - 1)
+                        if (i != rows - 1 && matrix[i, j] < matrix[i + 1, j])
                         {
-                            if (matrix[i, j] < matrix[i + 1, j])
-                            {
-                                int temp = matrix[i, j];
-                                matrix[i, j] = matrix[i + 1, j];
-                                matrix[i + 1, j] = temp;
-                            }
+                            int temp = matrix[i, j];
+                            matrix[i, j] = matrix[i + 1, j];
+                            matrix[i + 1, j] = temp;
                         }
 
-                        if (j != cols - 1)
-                        {
-                            if (matrix[i, j] < matrix[i, j + 1])
-                            {
-                                int temp = matrix[i, j];
-                                matrix[i, j] = matrix[i, j + 1];
-                                matrix[i, j + 1] = temp;
-                            }
+                        if (j != cols - 1 && (matrix[i, j] < matrix[i, j + 1]))
+                                {
+                            int temp = matrix[i, j];
+                            matrix[i, j] = matrix[i, j + 1];
+                            matrix[i, j + 1] = temp;
                         }
 
-                        if (i != rows - 1 && j != cols - 1)
+                        if (i != rows - 1 && j != cols - 1 && matrix[i, j] < matrix[i + 1, j + 1])
                         {
-                            if (matrix[i, j] < matrix[i + 1, j + 1])
-                            {
-                                int temp = matrix[i, j];
-                                matrix[i, j] = matrix[i + 1, j + 1];
-                                matrix[i + 1, j + 1] = temp;
-                            }
+                            int temp = matrix[i, j];
+                            matrix[i, j] = matrix[i + 1, j + 1];
+                            matrix[i + 1, j + 1] = temp;
                         }
 
-                        if (i != rows - 1 && j != 0)
+                        if (i != rows - 1 && j != 0 && matrix[i, j] < matrix[i + 1, cols - j])
                         {
-                            if (matrix[i, j] < matrix[i + 1, cols - j])
-                            {
-                                int temp = matrix[i, j];
-                                matrix[i, j] = matrix[i + 1, cols - j];
-                                matrix[i + 1, cols - j] = temp;
-                            }
+                            int temp = matrix[i, j];
+                            matrix[i, j] = matrix[i + 1, cols - j];
+                            matrix[i + 1, cols - j] = temp;
                         }
                     }
                 }
