@@ -7,55 +7,63 @@ namespace HomeWork3
     {
         static void Main(string[] args)
         {
-            GetTask();
+            string task = null;
+
+            while (task != "")
+            {
+                Console.WriteLine("--------------------------------\n" +
+                                  "Введите номер задачи (1,2,3)\n" +
+                                  "--------------------------------");
+                task = Console.ReadLine();
+                Console.WriteLine("");
+                GetTask(task);
+            }
         }
 
-        public static void GetTask()
+        public static void GetTask(string task)
         {
-
-            Console.WriteLine("--------------------------------\n"+
-                              "Введите номер задачи (1,2,3)\n" +
-                              "--------------------------------");
-            string task = Console.ReadLine();
-            Console.WriteLine("");
-
             switch (task)
             {
                 case "1":
                     ReplaceValues();
-                    GetTask();
                     break;
                 case "2":
                     CompareNumbers();
-                    GetTask();
                     break;
                 case "3":
                     IsNumberPalindrome();
-                    GetTask();
-                    break;
-                case "":
-                    Console.WriteLine("\n--------------------------------\n" +
-                                      "Чтобы выйти, нажмите Enter\n" +
-                                      "--------------------------------");
-                    Console.ReadLine();
                     break;
                 default:
-                    Console.WriteLine("Такой задачи нет"); ;
-                    GetTask();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Такой задачи нет\n");
+                    Console.ResetColor();
                     break;
             }
         }
 
-        public static List<string> GetValues(int count)
+        public static List<int> GetValues(int count)
         {
-            var values = new List<string>();
+            var values = new List<int>();
 
             for (int i = 0; i < count; i++)
             {
-                Console.WriteLine($"Введите значение {i + 1}");
-                var value = Console.ReadLine();
-                values.Add(value);
-                Console.WriteLine("");
+                try
+                {
+                    Console.WriteLine($"Введите значение {i + 1}");
+                    var value = Console.ReadLine();
+                    Console.WriteLine("");
+                    if (value == "")
+                        break;
+                    var num = Convert.ToInt32(value);
+                    values.Add(num);
+                }
+                catch (FormatException)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("!!\nВведите число\n!!\n");
+                    Console.ResetColor();
+                    i--;
+                }
             }
 
             return values;
@@ -69,14 +77,20 @@ namespace HomeWork3
                               "--------------------------------");
 
             var values = GetValues(2);
-            string value1 = values[0];
-            string value2 = values[1];
 
-            value1 += value2;
-            value2 = value1.Substring(0, value1.Length - value2.Length);
-            value1 = value1.Substring(value2.Length);
+            if (values.Count == 0)
+                return;
 
-            Console.WriteLine($"Результат:\nТеперь 1 - {value1}, 2 - {value2}\n");
+            int num1 = values[0];
+            int num2 = values[1];
+
+            num1 += num2;
+            num2 = num1 - num2;
+            num1 = num1 - num2;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Результат:\nТеперь 1 - {num1}, 2 - {num2}\n");
+            Console.ResetColor();
         }
 
         //2
@@ -88,21 +102,16 @@ namespace HomeWork3
 
             var values = GetValues(2);
 
-            if (values[0] == "" || values[1] == "")
+            if (values.Count == 0)
                 return;
 
-            try
-            {
-                value1 = Convert.ToInt32(values[0]);
-                value2 = Convert.ToInt32(values[1]);
-                var sign = value1 == value2 ? "=" : value1 > value2 ? ">" : "<";
+            value1 = values[0];
+            value2 = values[1];
+            var sign = value1 == value2 ? "=" : value1 > value2 ? ">" : "<";
 
-                Console.WriteLine($"Результат:\n{value1} {sign} {value2}\n");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("\n!!\nВведите число\n!!\n");
-            }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Результат:\n{value1} {sign} {value2}\n");
+            Console.ResetColor();
 
             CompareNumbers(value1, value2);
         }
@@ -113,31 +122,27 @@ namespace HomeWork3
             Console.WriteLine("--------------------------------\n" +
                               "Задача 3\n" +
                               "--------------------------------");
-            try
+
+            var value = GetValues(1);
+
+            if (value.Count == 0)
+                return;
+
+            var number = value[0];
+            var revers = 0;
+
+            while (number > 0)
             {
-                string value = GetValues(1)[0];
-
-                if (value == "")
-                    return;
-
-                var number = Convert.ToInt32(value);
-                var revers = 0;
-
-                while(number > 0)
-                {
-                    revers = revers * 10 + number % 10;
-                    number /= 10;
-                }
-
-                bool result = Convert.ToInt32(value) == revers;
-
-                Console.WriteLine($"Введенное число {value}{(result ? "" : " не")} является полиндромом");
+                revers = revers * 10 + number % 10;
+                number /= 10;
             }
-            catch (Exception)
-            {
-                Console.WriteLine("\n!!\nВведите число\n!!\n");
-                IsNumberPalindrome();
-            }
+
+            bool result = value[0] == revers;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Введенное число {value[0]}{(result ? "" : " не")} является полиндромом\n");
+            Console.ResetColor();
         }
     }
 }
+
