@@ -114,7 +114,7 @@
                 }
             }
 
-            var average = sum / arr.Length;
+            var average = sum * 1.0 / arr.Length;
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Сумма - {sum}");
@@ -141,6 +141,10 @@
             var cols = size[1];
 
             int[,] matrix = new int[rows, cols];
+            int[,] sortMatrix = new int[rows, cols];
+            var max = matrix[0, 0];
+            var min = matrix[0, 0];
+            var sum = 0;
 
             Random rand = new Random();
             for (int i = 0; i < rows; i++)
@@ -151,6 +155,103 @@
                 }
             }
 
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    Console.Write(String.Format("{0,4}", matrix[i, j]));
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"\nМатрица - ");
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (matrix[i, j] > max)
+                        max = matrix[i, j];
+
+                    if (matrix[i, j] < min)
+                        min = matrix[i, j];
+
+                    sum += matrix[i, j];
+
+                    Console.Write(String.Format("{0,4}", matrix[i, j]));
+                }
+                Console.WriteLine();
+            }
+
+            for (int k = 0; k < matrix.Length; k++)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < cols; j++)
+                    {
+
+                        if (i != rows - 1)
+                        {
+                            if (matrix[i, j] < matrix[i + 1, j])
+                            {
+                                int temp = matrix[i, j];
+                                matrix[i, j] = matrix[i + 1, j];
+                                matrix[i + 1, j] = temp;
+                            }
+                        }
+
+                        if (j != cols - 1)
+                        {
+                            if (matrix[i, j] < matrix[i, j + 1])
+                            {
+                                int temp = matrix[i, j];
+                                matrix[i, j] = matrix[i, j + 1];
+                                matrix[i, j + 1] = temp;
+                            }
+                        }
+
+                        if (i != rows - 1 && j != cols - 1)
+                        {
+                            if (matrix[i, j] < matrix[i + 1, j + 1])
+                            {
+                                int temp = matrix[i, j];
+                                matrix[i, j] = matrix[i + 1, j + 1];
+                                matrix[i + 1, j + 1] = temp;
+                            }
+                        }
+
+                        if (i != rows - 1 && j != 0)
+                        {
+                            if (matrix[i, j] < matrix[i + 1, cols - j])
+                            {
+                                int temp = matrix[i, j];
+                                matrix[i, j] = matrix[i + 1, cols - j];
+                                matrix[i + 1, cols - j] = temp;
+                            }
+                        }
+                    }
+                }
+            }
+
+            var average = sum * 1.0 / matrix.Length;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\nСумма - {sum}");
+            Console.WriteLine($"Максимальное - {max}");
+            Console.WriteLine($"Минимальное - {min}");
+            Console.WriteLine($"Среднее арифметическое - {average}");
+
+            Console.WriteLine($"Отсортированная матрица - ");
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    Console.Write(String.Format("{0,4}", matrix[i, j]));
+                }
+                Console.WriteLine();
+            }
+
+            Console.ResetColor();
+            Console.ReadLine();
         }
 
         static void CreateDictionary()
@@ -175,6 +276,9 @@
 
             Console.WriteLine("Введите слово");
             var word = Console.ReadLine().ToLower();
+
+            if (word == "")
+                return;
 
             if (dict.ContainsKey(word))
                 Console.WriteLine($"{word} - {dict[word]}");
