@@ -18,6 +18,9 @@
             card.CardActionHandler((message, sum) => Console.WriteLine($"{message}\nТекущий баланс {sum} р.\n"));
             card.Get(1);
             card.Put(0);
+
+            //Timer
+            //MyTimer.Start();
         }
     }
 }
