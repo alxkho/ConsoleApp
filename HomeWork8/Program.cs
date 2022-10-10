@@ -1,10 +1,14 @@
-﻿namespace HomeWork8
+﻿using HomeWork8.Attributes;
+using HomeWork8.Delegate;
+using HomeWork8.MyTimer;
+
+namespace HomeWork8
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var card = new CreditCard(100);
+            /*var card = new CreditCard(100);
             var client = new Client();
 
             card.CardActionHandler(client.PrintMessage);
@@ -17,10 +21,14 @@
 
             card.CardActionHandler((message, sum) => Console.WriteLine($"{message}\nТекущий баланс {sum} р.\n"));
             card.Get(1);
-            card.Put(0);
+            card.Put(0);*/
 
             //Timer
             //MyTimer.Start();
+
+
+            //Attribute
+            AttributeProgram.Start();
         }
     }
 }

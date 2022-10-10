@@ -1,4 +1,4 @@
-﻿namespace HomeWork8
+﻿namespace HomeWork8.MyTimer
 {
     public class MyTimer
     {

@@ -1,4 +1,4 @@
-﻿namespace HomeWork8
+﻿namespace HomeWork8.Delegate
 {
     public delegate void AccountAction(string message, int sum);
     public class CreditCard
