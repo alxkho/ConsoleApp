@@ -1,4 +1,6 @@
-﻿namespace Coursework
+﻿using Coursework.Collections;
+
+namespace Coursework.Models
 {
     public class Airline : IdName
     {

@@ -1,4 +1,6 @@
-﻿namespace Coursework
+﻿using Coursework.Interfaces;
+
+namespace Coursework.Models
 {
     public class Flight : IdName, IGetInfo
     {
@@ -14,7 +16,7 @@
             Airline = airline;
             Plane = plane;
             Route = route;
-            LandingDate = DepartureDate.AddHours(Route.TotalTime);
+            LandingDate = DepartureDate.AddHours(route?.TotalTime ?? 0);
         }
 
         public List<Seat> GetSeatsByClass(SeatType type)
@@ -29,7 +31,6 @@
 
         public Seat CheckSeat(string number)
         {
-
             var seat = Plane.AllSeats.Where(r => r.Type != SeatType.None && r.Number.ToLower() == number.ToLower() && !r.IsBooking).FirstOrDefault();
             return seat;
         }

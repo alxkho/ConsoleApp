@@ -1,4 +1,4 @@
-﻿namespace Coursework
+﻿namespace Coursework.Models
 {
     public class Plane : IdName
     {
@@ -30,7 +30,7 @@
         {
             if (businessSeats + pEconomySeats + economySeats > CountPlaces)
                 throw new Exception("");
-            var businessRows = (businessSeats / 4);
+            var businessRows = businessSeats / 4;
             var allRows = (CountPlaces - businessSeats) / SeatsInRow + businessRows;
             for (int i = 1; i <= allRows; i++)
             {

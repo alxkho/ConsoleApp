@@ -1,4 +1,4 @@
-﻿namespace Coursework
+﻿namespace Coursework.Models
 {
     public class Route : IdName
     {

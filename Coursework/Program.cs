@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using Coursework.Collections;
 
 namespace Coursework
 {
@@ -6,8 +6,12 @@ namespace Coursework
     {
         static void Main(string[] args)
         {
-            Aggregator aviasales = new Aggregator(1, "Aviasales");
-            aviasales.CreateTickets();
+            var planes = new Planes();
+            var airlines = new Airlines();
+            var routes = new Routes();
+            Flights flights = new Flights(planes, airlines, routes);
+
+            Aggregator aviasales = new Aggregator(1, "Aviasales", flights.AllFlights);
             aviasales.Start();
         }
     }

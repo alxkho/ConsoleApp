@@ -1,4 +1,6 @@
-﻿namespace Coursework
+﻿using Coursework.Interfaces;
+
+namespace Coursework.Models
 {
     public class AirTicket : IGetInfo
     {
@@ -6,7 +8,7 @@
         public Flight Flight { get; set; }
         public string SeatNumber { get; set; }
         public Seat Seat { get; set; }
-        public int Cost { get; set; } 
+        public int Cost { get; set; }
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
         public string Citizenship { get; set; }
@@ -39,7 +41,7 @@
 
         public string GetInfo()
         {
-            return $"{Flight.Name} {Flight.DepartureDate} {Flight.Route.DepartureAirport}-{Flight.Route.ArrivalAirport} Место: {Seat.Number} - {Cost}";
+            return $"{Flight.Name} {Flight.DepartureDate} {Flight.Route.DepartureAirport.Name}-{Flight.Route.ArrivalAirport.Name} Место: {Seat.Number} - {Cost}";
         }
     }
 }

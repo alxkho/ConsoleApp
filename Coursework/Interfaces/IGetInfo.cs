@@ -1,4 +1,4 @@
-﻿namespace Coursework
+﻿namespace Coursework.Interfaces
 {
     public interface IGetInfo
     {
