@@ -1,0 +1,15 @@
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.csproj.AssemblyReference.cache
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.GeneratedMSBuildEditorConfig.editorconfig
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.AssemblyInfoInputs.cache
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.AssemblyInfo.cs
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.csproj.CoreCompileInputs.cache
+D:\TMS\projects\HW\ConsoleApp\Coursework\bin\Debug\net6.0\Coursework.exe
+D:\TMS\projects\HW\ConsoleApp\Coursework\bin\Debug\net6.0\Coursework.deps.json
+D:\TMS\projects\HW\ConsoleApp\Coursework\bin\Debug\net6.0\Coursework.runtimeconfig.json
+D:\TMS\projects\HW\ConsoleApp\Coursework\bin\Debug\net6.0\Coursework.dll
+D:\TMS\projects\HW\ConsoleApp\Coursework\bin\Debug\net6.0\Coursework.pdb
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.dll
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\refint\Coursework.dll
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.pdb
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\Coursework.genruntimeconfig.cache
+D:\TMS\projects\HW\ConsoleApp\Coursework\obj\Debug\net6.0\ref\Coursework.dll
